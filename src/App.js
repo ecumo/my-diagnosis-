@@ -309,12 +309,12 @@ function IntroScreen({ onNext, onDebug }) {
           「ちゃんと愛しているのに、<br />うまくいかない」<br /><br />
           その理由は<br />"親の無意識の反応パターン"に<br />あるかもしれません
         </p>
-        <div style={{ background: C.mintLight, borderRadius: 14, padding: "16px 20px", marginBottom: 24, textAlign: "left" }}>
-          <p style={{ fontSize: 14, fontWeight: 700, color: C.text, marginBottom: 10 }}>こんな風に感じたことはありませんか？</p>
+        <div style={{ background: "#fff", border: "1px solid #D6E8E4", borderRadius: 14, padding: "16px 20px", marginBottom: 24, textAlign: "left" }}>
+          <p style={{ fontSize: 14, fontWeight: 700, color: "#333", marginBottom: 10 }}>こんな風に感じたことはありませんか？</p>
           {["泣かれると不安になる", "つい強く言ってしまう", "これでいいのか迷う", "子どもの反応に振り回される"].map((t) => (
-            <p key={t} style={{ fontSize: 14, lineHeight: 1.8, color: C.subText }}>・{t}</p>
+            <p key={t} style={{ fontSize: 14, lineHeight: 1.8, color: "#666" }}>・{t}</p>
           ))}
-          <p style={{ fontSize: 14, lineHeight: 1.8, color: C.text, marginTop: 10 }}>それは、あなたのせいではありません。</p>
+          <p style={{ fontSize: 14, lineHeight: 1.8, color: "#333", marginTop: 10, fontWeight: 500 }}>それは、あなたのせいではありません。</p>
         </div>
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 36 }}>
           <div style={{ background: "#EAF7F4", borderRadius: 14, padding: "16px 24px" }}>
