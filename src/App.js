@@ -255,7 +255,7 @@ const C = {
   subText: "#666666",
   border: "#D6E8E4",
   white: "#FFFFFF",
-  mintDark: "#0F6E56",
+  mintDark: "#4A7B6F",
 };
 
 const globalStyle = `
@@ -264,7 +264,7 @@ const globalStyle = `
   body { background: ${C.bg}; font-family: 'Noto Sans JP', 'Hiragino Sans', system-ui, sans-serif; color: ${C.text}; }
   .app { max-width: 430px; margin: 0 auto; min-height: 100vh; padding: 0 0 40px; }
   .card { background: ${C.white}; border-radius: 20px; border: 1px solid ${C.border}; padding: 28px 24px; margin: 0 16px 16px; }
-  .btn-primary { display: block; width: 100%; background: ${C.mintDark}; color: #fff; border: none; border-bottom: 4px solid #084d3c; border-radius: 999px; font-size: 16px; font-weight: 700; padding: 18px 16px; cursor: pointer; font-family: inherit; line-height: 1.5; transition: opacity 0.15s, transform 0.1s; letter-spacing: 0.03em; }
+  .btn-primary { display: block; width: 100%; background: ${C.mintDark}; color: #fff; border: none; border-bottom: 4px solid #3a6159; border-radius: 999px; font-size: 16px; font-weight: 700; padding: 18px 16px; cursor: pointer; font-family: inherit; line-height: 1.5; transition: opacity 0.15s, transform 0.1s; letter-spacing: 0.03em; }
   .btn-primary:active { opacity: 0.85; transform: translateY(2px); border-bottom-width: 2px; }
   .btn-cta { display: block; width: 100%; background: #C4758A; color: #fff; border: none; border-bottom: 4px solid #a05870; border-radius: 999px; font-size: 16px; font-weight: 700; padding: 18px 16px; cursor: pointer; font-family: inherit; line-height: 1.5; transition: opacity 0.15s, transform 0.1s; text-align: center; letter-spacing: 0.05em; }
   .btn-cta:active { opacity: 0.85; transform: translateY(2px); border-bottom-width: 2px; }
@@ -272,7 +272,7 @@ const globalStyle = `
   .btn-cta-final:active { opacity: 0.85; transform: translateY(2px); border-bottom-width: 2px; }
   .btn-choice { display: block; width: 100%; background: ${C.mintLight}; color: ${C.text}; border: 1.5px solid ${C.border}; border-radius: 14px; font-size: 16px; font-weight: 500; padding: 18px 20px; cursor: pointer; font-family: inherit; text-align: left; transition: background 0.12s, border-color 0.12s, transform 0.1s; }
   .btn-choice:active { transform: scale(0.98); }
-  .btn-choice.selected { background: #9FE1CB; border: 2.5px solid ${C.mintDark}; color: ${C.mintDark}; font-weight: 700; transform: scale(1.01); }
+  .btn-choice.selected { background: #8BBFAD; border: 2.5px solid ${C.mintDark}; color: ${C.mintDark}; font-weight: 700; transform: scale(1.01); }
   .progress-bar { height: 6px; background: ${C.mintLight}; border-radius: 99px; margin: 0 16px 20px; }
   .progress-fill { height: 100%; background: ${C.mintDark}; border-radius: 99px; transition: width 0.35s ease; }
   .text-sub { color: ${C.subText}; font-size: 14px; line-height: 1.7; }
@@ -305,15 +305,22 @@ function IntroScreen({ onNext, onDebug }) {
         <h1 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.7, marginBottom: 12 }}>
           親の関わり方で、<br />子どもの未来は変わる
         </h1>
-        <p style={{ fontSize: 16, color: C.subText, lineHeight: 1.9, marginBottom: 28 }}>
+        <p style={{ fontSize: 16, color: C.subText, lineHeight: 1.9, marginBottom: 20 }}>
           「ちゃんと愛しているのに、<br />うまくいかない」<br /><br />
           その理由は<br />"親の無意識の反応パターン"に<br />あるかもしれません
         </p>
+        <div style={{ background: C.mintLight, borderRadius: 14, padding: "16px 20px", marginBottom: 24, textAlign: "left" }}>
+          <p style={{ fontSize: 14, fontWeight: 700, color: C.text, marginBottom: 10 }}>こんな風に感じたことはありませんか？</p>
+          {["泣かれると不安になる", "つい強く言ってしまう", "これでいいのか迷う", "子どもの反応に振り回される"].map((t) => (
+            <p key={t} style={{ fontSize: 14, lineHeight: 1.8, color: C.subText }}>・{t}</p>
+          ))}
+          <p style={{ fontSize: 14, lineHeight: 1.8, color: C.text, marginTop: 10 }}>それは、あなたのせいではありません。</p>
+        </div>
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 36 }}>
           <div style={{ background: "#EAF7F4", borderRadius: 14, padding: "16px 24px" }}>
             {["約3分で完了", "直感でOK", "正解はありません"].map((t) => (
               <div key={t} style={{ display: "flex", alignItems: "center", gap: 10, padding: "6px 0" }}>
-                <span style={{ color: "#0F6E56", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>✓</span>
+                <span style={{ color: "#4A7B6F", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>✓</span>
                 <span style={{ fontSize: 15, color: "#333", fontWeight: 500 }}>{t}</span>
               </div>
             ))}
@@ -610,7 +617,7 @@ export default function App() {
     <>
       <style>{globalStyle}</style>
       <div className="app">
-        {screen === "intro" && <IntroScreen onNext={() => setScreen("empathy")} onDebug={(type) => {
+        {screen === "intro" && <IntroScreen onNext={() => setScreen("start")} onDebug={(type) => {
           const dummyAnswers = {};
           if (type === "secure") {
             [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].forEach(i => dummyAnswers[i] = 1);
@@ -627,7 +634,7 @@ export default function App() {
           }
           setAnswers(dummyAnswers); setScreen("result");
         }} />}
-        {screen === "empathy" && <EmpathyScreen onNext={() => setScreen("start")} />}
+        
         {screen === "start" && <StartScreen onNext={() => setScreen("quiz")} />}
         {screen === "quiz" && (
           <QuizScreen
