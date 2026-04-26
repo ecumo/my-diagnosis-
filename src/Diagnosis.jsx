@@ -609,7 +609,7 @@ function ResultScreen({ answers, onReset }) {
 // ============================================================
 // メインApp
 // ============================================================
-export default function App() {
+export default function Diagnosis() {
   const [screen, setScreen] = useState("intro");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
