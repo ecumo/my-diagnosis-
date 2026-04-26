@@ -85,7 +85,7 @@ const CHOICES = [
   { value: 1, label: "全く無い" },
   { value: 2, label: "あまり無い" },
   { value: 3, label: "どちらでもない" },
-  { value: 4, label: "よくある" },
+  { value: 4, label: "たまにある" },
   { value: 5, label: "すごくある" },
 ];
 
