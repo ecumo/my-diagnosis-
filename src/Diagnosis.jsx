@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
 // ============================================================
 // 定数 — CTA URLはここを変更してください
@@ -10,18 +11,6 @@ const CONSULTATION_URL = "https://example.com";
 // ============================================================
 // Firebase設定
 // ============================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyD-5WQfkWm9ap1iOUIyDWAhB6jdduhMBeY",
-  authDomain: "my-attachment-type.firebaseapp.com",
-  projectId: "my-attachment-type",
-  storageBucket: "my-attachment-type.firebasestorage.app",
-  messagingSenderId: "513195883308",
-  appId: "1:513195883308:web:b278aa7cee245a2439ca89",
-  measurementId: "G-GR9JZTHLX1"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 // ============================================================
 // データ保存関数
