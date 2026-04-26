@@ -29,14 +29,21 @@ export default function AdminDashboard() {
   }, [user]);
 
   const fetchStats = async () => {
-    const snap = await getDocs(collection(db, "diagnoses"));
-    const docs = snap.docs.map(d => d.data());
-    const visits = docs.filter(d => d.type === "visit").length;
-    const completions = docs.filter(d => d.type === "completion");
-    const ctaClicks = docs.filter(d => d.type === "cta_click").length;
+    const diagSnap = await getDocs(collection(db, "diagnoses"));
+    const visitSnap = await getDocs(collection(db, "visits"));
+    
+    const diagnoses = diagSnap.docs.map(d => d.data());
+    const completions = diagnoses.filter(d => d.completed === true);
+    const visits = visitSnap.size;
+    
     const typeCounts = { secure: 0, anxious: 0, avoidant: 0, disorganized: 0 };
-    completions.forEach(d => { if (typeCounts[d.result] !== undefined) typeCounts[d.result]++; });
-    setStats({ visits, completions: completions.length, ctaClicks, typeCounts });
+    completions.forEach(d => {
+      if (d.resultType && typeCounts[d.resultType] !== undefined) {
+        typeCounts[d.resultType]++;
+      }
+    });
+
+    setStats({ visits, completions: completions.length, ctaClicks: 0, typeCounts });
   };
 
   const handleLogin = async (e) => {
