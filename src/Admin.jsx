@@ -101,7 +101,7 @@ export default function AdminDashboard() {
           <>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
               {[
-                { label: "訪問者数", value: stats.visits },
+                { label: "訪問者(UU)数", value: stats.visits },
                 { label: "診断完了数", value: stats.completions, sub: `完了率 ${stats.visits ? Math.round(stats.completions/stats.visits*100) : 0}%` },
                 { label: "CTAクリック数", value: stats.ctaClicks },
                 { label: "CTAクリック率", value: `${stats.completions ? Math.round(stats.ctaClicks/stats.completions*100) : 0}%`, sub: "完了者のうち", color: "#C4845A" },

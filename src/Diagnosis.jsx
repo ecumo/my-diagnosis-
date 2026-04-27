@@ -16,6 +16,9 @@ const CONSULTATION_URL = "https://example.com";
 // データ保存関数
 // ============================================================
 async function saveVisit() {
+  const visited = localStorage.getItem("visited");
+  if (visited) return;
+  localStorage.setItem("visited", "true");
   try {
     await addDoc(collection(db, "visits"), {
       timestamp: serverTimestamp(),
